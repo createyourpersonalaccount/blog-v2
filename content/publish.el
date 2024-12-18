@@ -28,7 +28,7 @@
                                          entry))))
              (if (file-directory-p entry)
                  (capitalize entry)
-               (format "[[file:%s][%s]]%s"
+               (format "[[./%s][%s]]%s"
                        entry title
                        (if has-date
                            (format-time-string ", %Y-%m-%d %a" date)
