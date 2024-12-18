@@ -37,7 +37,7 @@ jobs:
         run: |
           sudo apt update
           sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string 'No configuration'"
-          sudo apt install -y make emacs-nox
+          sudo apt install -y emacs-nox make texlive
           make -C content
       - name: Setup Pages
         uses: actions/configure-pages@v5
