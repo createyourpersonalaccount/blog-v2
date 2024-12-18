@@ -34,10 +34,12 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
           TZ: Etc/UTC
+          BLOG_PREFIX: ${{ github.repository }}
         run: |
           sudo apt update
           sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string 'No configuration'"
           sudo apt install -y emacs-nox make texlive texlive-pictures
+          export BLOG_PREFIX="/${BLOG_PREFIX#*/}"
           make -C content
       - name: Setup Pages
         uses: actions/configure-pages@v5
