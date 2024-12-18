@@ -35,9 +35,10 @@ jobs:
           DEBIAN_FRONTEND: noninteractive
           TZ: Etc/UTC
         run: |
-          apt update
-          debconf-set-selections <<< "postfix postfix/main_mailer_type string 'No configuration'"
-          apt install -y make emacs-nox
+          sudo apt update
+          sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string 'No configuration'"
+          sudo apt install -y make emacs-nox
+          make -C content
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
