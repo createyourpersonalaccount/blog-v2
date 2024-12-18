@@ -17,3 +17,19 @@ Then it may be viewed in Firefox with:
 #+begin_src sh
   firefox localhost:8000
 #+end_src
+
+* TODO Things to do
+
+** TODO Add class property to nagivation links
+
+I can then customize them with CSS.
+
+** TODO Add interesting CSS for directories
+
+This might be possible with ~file-directory-p~ adding that specific attribute. Directories should be cool looking. Also see if you can include interesting bullets for files to simulate the tree-like structure more
+
+** TODO Add title to navigation sidebar
+
+Right now it is not clear what all that information is. Maybe adding a title would be useful. Or some other kind of divider from the main content.
+
+** TODO Add colorized source code block export
