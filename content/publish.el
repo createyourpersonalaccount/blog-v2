@@ -1,7 +1,7 @@
-(defvar blog-prefix "/blog-v2")
+(defvar blog-prefix (or (getenv "BLOG_PREFIX") ""))
 (setq enable-local-variables :all)
 (setq org-publish-project-alist
-      '(("blog"
+      `(("blog"
          :components ("blog-pages" "blog-assets"))
         ("blog-pages"
          :author "Nikolaos Chatzikonstantinou"
@@ -9,8 +9,8 @@
          :email "nchatz314@gmail.com"
          :time-stamp-file nil
          :html-metadata-timestamp-format "%Y-%m-%d %a"
-         :html-head (format "<link rel=\"stylesheet\" href=\"%s/css/style.css\">" blog-prefix)
-         :html-mathjax-options ((path (format "%s/mathjax/tex-chtml.js" blog-prefix)))
+         :html-head ,(format "<link rel=\"stylesheet\" href=\"%s/css/style.css\">" blog-prefix)
+         :html-mathjax-options ((path ,(format "%s/mathjax/tex-chtml.js" blog-prefix)))
          :html-validation-link ""
          :base-directory "."
          :base-extension "org"
