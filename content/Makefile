@@ -5,8 +5,9 @@ all: img publish
 img:
 	make -C img
 
-publish: pages/about.org
+publish:
 	emacs	--quick --batch \
 		--load 'publish.el' \
-		--file $< \
+		--file pages/index.org \
 		--eval '(org-publish-current-project t)'
+	rm -f ../public/sitemap.html

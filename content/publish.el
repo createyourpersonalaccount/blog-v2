@@ -18,7 +18,6 @@
          :base-extension "org"
          :recursive t
          :auto-sitemap t
-         :sitemap-filename "index.org"
          :publishing-function org-html-publish-to-html
          :publishing-directory "../../public")
         ("blog-assets"

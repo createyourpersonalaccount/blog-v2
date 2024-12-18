@@ -16,6 +16,17 @@ span.subtitle {
     font-size: 80%;
 }
 
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
 #content { max-width: 60em; margin: auto; }
 .title  { text-align: center;
           margin-bottom: .2em; }

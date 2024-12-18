@@ -16,3 +16,7 @@ Let's try a TikZ commutative diagram:
 [[./img/example.svg]]
 
 This is Figure [[fig:example-figure]].
+
+#+HTML: <nav class="sidebar">
+#+INCLUDE: "sitemap.org" :lines "3-"
+#+HTML: </nav>
