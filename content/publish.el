@@ -18,6 +18,21 @@
          :base-extension "org"
          :recursive t
          :auto-sitemap t
+         :sitemap-format-entry
+         (lambda (entry sitemap-style project)
+           (let ((title (org-publish-find-title entry project))
+                 (date (org-publish-find-date entry project))
+                 (has-date (zerop
+                            (call-process "awk" nil nil nil
+                                         "NR<=10 && /^#\\+DATE:/ {f=1} END {exit !f}"
+                                         entry))))
+             (if (file-directory-p entry)
+                 (capitalize entry)
+               (format "[[file:%s][%s]]%s"
+                       entry title
+                       (if has-date
+                           (format-time-string ", %Y-%m-%d %a" date)
+                         "")))))
          :publishing-function org-html-publish-to-html
          :publishing-directory "../../public")
         ("blog-assets"
