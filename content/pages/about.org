@@ -1,0 +1,18 @@
+#+TITLE: About
+#+OPTIONS: toc:nil
+#+DATE: <2024-12-18 Wed>
+
+* Hello world
+
+This is my [[file:page.org][page]]. Hehe. he.
+
+Let's get a formula working: $a + b = c$.
+
+Let's try a TikZ commutative diagram:
+
+#+ATTR_HTML: :width 40% :height 40%
+#+CAPTION: hello world
+#+NAME: fig:example-figure
+[[./img/example.svg]]
+
+This is Figure [[fig:example-figure]].
