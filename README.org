@@ -1,0 +1,19 @@
+* My personal blog
+
+This blog can be built with:
+
+#+begin_src sh
+  make -C content
+#+end_src
+
+and served with:
+
+#+begin_src sh
+  python3 -m http.server -d public
+#+end_src
+
+Then it may be viewed in Firefox with:
+
+#+begin_src sh
+  firefox localhost:8000
+#+end_src
