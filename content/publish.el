@@ -12,6 +12,8 @@
          :html-head ,(format "<link rel=\"stylesheet\" href=\"%s/css/style.css\">" blog-prefix)
          :html-mathjax-options ((path ,(format "%s/mathjax/tex-chtml.js" blog-prefix)))
          :html-validation-link ""
+         :html-head-include-default-style nil
+         :html-head-include-scripts nil
          :base-directory "."
          :base-extension "org"
          :recursive t
