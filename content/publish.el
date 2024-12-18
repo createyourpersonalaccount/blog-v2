@@ -1,3 +1,4 @@
+(defvar blog-prefix "/blog-v2")
 (setq enable-local-variables :all)
 (setq org-publish-project-alist
       '(("blog"
@@ -8,8 +9,8 @@
          :email "nchatz314@gmail.com"
          :time-stamp-file nil
          :html-metadata-timestamp-format "%Y-%m-%d %a"
-         :html-head "<link rel=\"stylesheet\" href=\"/css/style.css\">"
-         :html-mathjax-options ((path "mathjax/tex-chtml.js"))
+         :html-head (format "<link rel=\"stylesheet\" href=\"%s/css/style.css\">" blog-prefix)
+         :html-mathjax-options ((path (format "%s/mathjax/tex-chtml.js" blog-prefix)))
          :html-validation-link ""
          :base-directory "."
          :base-extension "org"
