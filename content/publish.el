@@ -1,4 +1,20 @@
 (defvar blog-prefix (or (getenv "BLOG_PREFIX") ""))
+(defun format-dir-nav-sidebar (entry)
+  "Format a directory for the navigation sidebar"
+  (capitalize (replace-regexp-in-string "-" " " entry)))
+(defun format-blog-entry-nav-sidebar (entry project)
+  "Format a blog entry for the navigation sidebar"
+  (let ((title (org-publish-find-title entry project))
+        (date (org-publish-find-date entry project))
+        (has-date (zerop
+                   (call-process "awk" nil nil nil
+                                 "NR<=10 && /^#\\+DATE:/ {f=1} END {exit !f}"
+                                 entry))))
+    (format "[[./%s][%s]]%s"
+            entry title
+            (if has-date
+                (format-time-string ", %Y-%m-%d %a" date)
+              ""))))
 (setq enable-local-variables :all)
 (setq org-publish-project-alist
       `(("blog"
@@ -23,19 +39,9 @@
          :auto-sitemap t
          :sitemap-format-entry
          (lambda (entry sitemap-style project)
-           (let ((title (org-publish-find-title entry project))
-                 (date (org-publish-find-date entry project))
-                 (has-date (zerop
-                            (call-process "awk" nil nil nil
-                                         "NR<=10 && /^#\\+DATE:/ {f=1} END {exit !f}"
-                                         entry))))
-             (if (file-directory-p entry)
-                 (capitalize entry)
-               (format "[[./%s][%s]]%s"
-                       entry title
-                       (if has-date
-                           (format-time-string ", %Y-%m-%d %a" date)
-                         "")))))
+           (if (file-directory-p entry)
+               (format-dir-nav-sidebar entry)
+             (format-blog-entry-nav-sidebar entry project)))
          :publishing-function org-html-publish-to-html
          :publishing-directory "../../public")
         ("blog-assets"
