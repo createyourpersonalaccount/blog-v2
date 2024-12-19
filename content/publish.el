@@ -9,7 +9,8 @@
      (format "<link rel=\"stylesheet\" href=\"%s/css/%s\">"
              blog-prefix
              file))
-   files))
+   files
+   "\n"))
 (defun inline-html-for-sitemap (html)
   "Produce a string that can be used inside sitemap.org.
 
