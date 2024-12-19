@@ -1,4 +1,15 @@
 (defvar blog-prefix (or (getenv "BLOG_PREFIX") ""))
+(defvar css-files
+  (list "style.css"
+        "atom-one-light.min.css"))
+(defun html-link-css (blog-prefix files)
+  "Create HTML link tags linking to the CSS files."
+  (mapconcat
+   (lambda (file)
+     (format "<link rel=\"stylesheet\" href=\"%s/css/%s\">"
+             blog-prefix
+             file))
+   files))
 (defun inline-html-for-sitemap (html)
   "Produce a string that can be used inside sitemap.org.
 
@@ -42,7 +53,7 @@ appearance of this string in the final sitemap.org."
          :email "nchatz314@gmail.com"
          :time-stamp-file nil
          :html-metadata-timestamp-format "%Y-%m-%d %a"
-         :html-head ,(format "<link rel=\"stylesheet\" href=\"%s/css/style.css\">" blog-prefix)
+         :html-head ,(html-link-css blog-prefix css-files)
          :html-mathjax-options ((path ,(format "%s/mathjax/tex-chtml.js" blog-prefix)))
          :html-validation-link ""
          :html-head-include-default-style nil

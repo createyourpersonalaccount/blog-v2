@@ -13,5 +13,8 @@ publish:
 		--load 'publish.el' \
 		--file pages-tmp/index.org \
 		--eval '(org-publish-current-project t)'
-	rm -rf pages-tmp
 	rm -f ../public/sitemap.html
+	rm -rf pages-tmp
+	find ../public -type f -name '*.html' \
+		-exec node colorize-source-code.js {} +
+

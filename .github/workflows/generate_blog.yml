@@ -38,7 +38,8 @@ jobs:
         run: |
           sudo apt update
           sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string 'No configuration'"
-          sudo apt install -y emacs-nox make texlive texlive-pictures
+          sudo apt install -y emacs-nox make npm texlive texlive-pictures
+          npm install cheerio highlight.js html_entities
           export BLOG_PREFIX="/${BLOG_PREFIX#*/}"
           make -C content
       - name: Setup Pages

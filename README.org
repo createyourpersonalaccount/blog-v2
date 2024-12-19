@@ -33,9 +33,12 @@ This might be possible with ~file-directory-p~ adding that specific attribute. D
 
 Right now it is not clear what all that information is. Maybe adding a title would be useful. Or some other kind of divider from the main content.
 
-** TODO Add colorized source code block export
+** DONE Add colorized source code block export
+CLOSED: [2024-12-19 Thu 06:00]
 
 To do this, the Emacs solutions won't work. Use either [[https://prismjs.com/][PrismJS]] (see also [[https://macarthur.me/posts/run-prism-js-server-side/][this blog post]]) or [[https://highlightjs.org/][highlight.js]].
+
+I went with highlight.js.
 
 ** TODO nav sidebar folds onto content on small screens
 
