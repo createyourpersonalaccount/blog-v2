@@ -66,6 +66,7 @@ appearance of this string in the final sitemap.org."
          :base-extension "org"
          :recursive t
          :auto-sitemap t
+         :sitemap-sort-files anti-chronologically
          :sitemap-format-entry
          (lambda (entry sitemap-style project)
            (if (file-directory-p entry)
