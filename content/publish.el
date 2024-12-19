@@ -14,6 +14,9 @@
          :html-validation-link ""
          :html-head-include-default-style nil
          :html-head-include-scripts nil
+         :html-divs ((preamble "header" "preamble")
+                     (content "main" "content")
+                     (postamble "footer" "postamble"))
          :base-directory "."
          :base-extension "org"
          :recursive t
