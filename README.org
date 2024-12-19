@@ -45,3 +45,9 @@ To fix this, put the article content inside one div and the nav sidebar in anoth
 #+end_src
 
 which org-publish puts in.
+
+** TODO Custom link types
+
+I can add custom link types like ~img:~ and ~svg:~ that will compute the right amount of ~../~ needed to reach the root directory. See [[info:org#Adding Hyperlink Types][(org)Adding Hyperlink Types]].
+
+https://orgmode.org/manual/Adding-Hyperlink-Types.html
