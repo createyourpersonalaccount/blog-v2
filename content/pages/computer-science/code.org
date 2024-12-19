@@ -1,0 +1,19 @@
+#+TITLE: Some C++ code
+#+DATE: <2024-12-19 Thu>
+
+* Introduction
+
+Showing off a source code block:
+
+#+begin_src cpp
+  #include <iostream>
+  #include <string>
+
+  int main(void) {
+    std::string message = "Hello world";
+    std::cout << message << std::endl;
+    return 0;
+  }
+#+end_src
+
+Bye-bye now!
