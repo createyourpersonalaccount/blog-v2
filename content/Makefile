@@ -8,7 +8,7 @@ img:
 publish:
 	cp -r pages pages-tmp
 	find pages-tmp -type f -name '*.org' \
-		-exec sh -c 'printf "#+HTML: <nav class=\"sidebar\">\n#+INCLUDE: \"%s/pages-tmp/sitemap.org\" :lines \"3-\"\n#+HTML: </nav>" $$1 >> $$2' _ $(CURDIR) {} \;
+		-exec sh -c 'printf "#+HTML: <nav class=\"sidebar\">\n#+INCLUDE: \"%s/pages-tmp/sitemap.org\" :lines \"3-\"\n#+HTML: </nav>\n" $$1 >> $$2' _ $(CURDIR) {} \;
 	emacs	--quick --batch \
 		--load 'publish.el' \
 		--file pages-tmp/index.org \
