@@ -20,7 +20,8 @@ Then it may be viewed in Firefox with:
 
 * TODO Things to do
 
-** TODO Add class property to nagivation links
+** DONE Add class property to nagivation links
+CLOSED: [2024-12-19 Thu 03:14]
 
 I can then customize them with CSS.
 

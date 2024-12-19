@@ -27,6 +27,10 @@ span.subtitle {
     list-style-type: none;
 }
 
+.sidebar .blog-entry-date {
+    font-style: italic;
+}
+
 #content { max-width: 60em; margin: auto; }
 .title  { text-align: center;
           margin-bottom: .2em; }

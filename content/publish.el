@@ -1,19 +1,36 @@
 (defvar blog-prefix (or (getenv "BLOG_PREFIX") ""))
+(defun inline-html-for-sitemap (html)
+  "Produce a string that can be used inside sitemap.org.
+
+Sitemap for some reason strips a normal backend string like
+@@html:<b>@@. We use this \"bug\" against itself to force the
+appearance of this string in the final sitemap.org."
+  (format "@@html@@a:@@:%s@@" html))
+(defun format-blog-entry-date-nav-sidebar (entry project)
+  "This formats the YYYY-MM-DD part of a blog entry"
+  (let* ((date (org-publish-find-date entry project))
+         (has-date
+          (zerop
+           (call-process "awk" nil nil nil
+                         "NR<=10 && /^#\\+DATE:/ {f=1} END {exit !f}"
+                         entry))))
+    (when has-date
+      (format-time-string "%Y-%m-%d" date))))
 (defun format-dir-nav-sidebar (entry)
   "Format a directory for the navigation sidebar"
   (capitalize (replace-regexp-in-string "-" " " entry)))
 (defun format-blog-entry-nav-sidebar (entry project)
   "Format a blog entry for the navigation sidebar"
   (let ((title (org-publish-find-title entry project))
-        (date (org-publish-find-date entry project))
-        (has-date (zerop
-                   (call-process "awk" nil nil nil
-                                 "NR<=10 && /^#\\+DATE:/ {f=1} END {exit !f}"
-                                 entry))))
+        (date (format-blog-entry-date-nav-sidebar entry project)))
     (format "[[./%s][%s]]%s"
-            entry title
-            (if has-date
-                (format-time-string ", %Y-%m-%d %a" date)
+            entry
+            title
+            (if date
+                (format ", %s%s%s"
+                        (inline-html-for-sitemap "<span class=\"blog-entry-date\">")
+                        date
+                        (inline-html-for-sitemap "</span>"))
               ""))))
 (setq enable-local-variables :all)
 (setq org-publish-project-alist
