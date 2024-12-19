@@ -33,3 +33,13 @@ This might be possible with ~file-directory-p~ adding that specific attribute. D
 Right now it is not clear what all that information is. Maybe adding a title would be useful. Or some other kind of divider from the main content.
 
 ** TODO Add colorized source code block export
+
+** TODO nav sidebar folds onto content on small screens
+
+To fix this, put the article content inside one div and the nav sidebar in another div. Right now everything is inside
+
+#+begin_src html
+  <div id="content" class="content">
+#+end_src
+
+which org-publish puts in.
